@@ -23,23 +23,28 @@ import java.util.Map;
 @RequestMapping("pms/oss")
 public class OssController {
 
-
     @GetMapping("policy")
     public ResponseVo<Object> policy(){
         String accessId = "LTAI4G3UwbY9kPXoK9aG4467"; // 请填写您的AccessKeyId。
         String accessKey = "mMxq09btio36uuez9U2C2axkm1P5iR"; // 请填写您的AccessKeySecret。
+
         String endpoint = "oss-cn-shanghai.aliyuncs.com"; // 请填写您的 endpoint。
         String bucket = "sh200821-gulionline-xhd"; // 请填写您的 bucketname 。
+
         String host = "https://" + bucket + "." + endpoint; // host的格式为 bucketname.endpoint
+
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String dir = sdf.format(new Date());
 
+
         // 创建OSSClient实例。
         OSS ossClient = new OSSClientBuilder().build(endpoint, accessId, accessKey);
+
         try {
             long expireTime = 30;
             long expireEndTime = System.currentTimeMillis() + expireTime * 1000;
             Date expiration = new Date(expireEndTime);
+
             // PostObject请求最大可支持的文件大小为5 GB，即CONTENT_LENGTH_RANGE为5*1024*1024*1024。
             PolicyConditions policyConds = new PolicyConditions();
             policyConds.addConditionItem(PolicyConditions.COND_CONTENT_LENGTH_RANGE, 0, 1048576000);
@@ -66,6 +71,7 @@ public class OssController {
         } finally {
             ossClient.shutdown();
         }
+
         return ResponseVo.fail("获取签名失败！");
     }
 }

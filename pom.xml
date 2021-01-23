@@ -19,6 +19,7 @@
     <modules>
         <module>gmall-admin</module>
         <module>gmall-common</module>
+        <module>gmall-sms-interface</module>
     </modules>
 
     <properties>
@@ -129,8 +130,6 @@
                 <artifactId>joda-time</artifactId>
                 <version>${joda.version}</version>
             </dependency>
-
-
 
             <dependency>
                 <groupId>org.apache.commons</groupId>

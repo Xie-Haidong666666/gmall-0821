@@ -1,5 +1,6 @@
 package com.atguigu.gmall.pms.service;
 
+import com.atguigu.gmall.pms.vo.SpuVo;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.atguigu.gmall.common.bean.PageResultVo;
 import com.atguigu.gmall.common.bean.PageParamVo;
@@ -15,7 +16,7 @@ import java.util.Map;
  * @date 2021-01-18 23:17:03
  */
 public interface SpuDescService extends IService<SpuDescEntity> {
-
+    void saveSpuDesc(SpuVo spu, Long spuId);
     PageResultVo queryPage(PageParamVo paramVo);
 }
 
